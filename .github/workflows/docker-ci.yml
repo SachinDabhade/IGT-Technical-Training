@@ -18,7 +18,7 @@ jobs:
       run: echo "${{ secrets.PASS }}" | docker login -u "${{ secrets.USER }}" --password-stdin
  
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag SachinDabhade/githubwebserver
+      run: docker build . --file Dockerfile --tag sachindabhade1905/githubwebserver
  
     - name: Push Docker Image
-      run: docker push SachinDabhade/githubwebserve
+      run: docker push sachindabhade1905/githubwebserve
