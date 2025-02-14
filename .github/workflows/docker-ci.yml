@@ -1,24 +1,30 @@
 name: Docker Image CI
- 
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
- 
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
- 
+
+    # Step 1: Log in to Docker Hub using the login-action
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.PASS }}" | docker login -u "${{ secrets.USER }}" --password-stdin
- 
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASS }}
+
+    # Step 2: Build the Docker image
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag sachindabhade1905/githubwebserver
- 
+
+    # Step 3: Push Docker Image to Docker Hub
     - name: Push Docker Image
-      run: docker push sachindabhade1905/githubwebserve
+      run: docker push sachindabhade1905/githubwebserver
