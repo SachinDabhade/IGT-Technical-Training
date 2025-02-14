@@ -1,14 +1,12 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9
-
-# Set the working directory in the container
+FROM python:3.8-slim-buster
+ 
 WORKDIR /app
-
-# Copy the current directory contents into the container
-COPY . /app
-
-# Install dependencies
-RUN pip install -r requirements.txt
-
-# Command to run the application
+ 
+COPY app.py .
+ 
+RUN pip install flask
+ 
+EXPOSE 5000
+ 
+# Command to run the app
 CMD ["python", "app.py"]
