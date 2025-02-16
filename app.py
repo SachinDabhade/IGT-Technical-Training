@@ -7,6 +7,18 @@ app = Flask(__name__)
 def home():
 
    return "Hello, Flask Server!"
+
+@app.route('/contact')
+
+def contact():
+
+   return "Hello, Lets connect!"
+
+@app.route('/about')
+
+def about():
+
+   return "Hello, I am Sachin!"
  
 if __name__ == '__main__':
 
